@@ -34,6 +34,7 @@ td{
                 <th>Category</th>
                 <th>Image</th>
                 <th>Rating</th>
+                <th>Count</th>
             </tr>
         </thead>
         <tbody>
@@ -42,8 +43,7 @@ td{
     </table>
    
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const products = [
+    let obj = [
             {
               id: 1,
               title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -254,28 +254,54 @@ td{
               category: "women's clothing",
               image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
               rating: { rate: 3.6, count: 145 },
-            },
+            }
           ];
         
-      
-    
-      const tableBody = document.querySelector('#table tbody');
-    
-      for (let i = 0; i < products.length; i++) {
-        const product = products[i];
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${product.id}</td>
-          <td>${product.title}</td>
-          <td>$${product.price}</td>
-          <td>${product.description}</td>
-          <td>${product.category}</td>
-          <td><img src="${product.image}" alt="${product.title}" style="max-width: 100px;"></td>
-          <td>${product.rating.rate} (${product.rating.count} reviews)</td>
-        `;
-        tableBody.appendChild(row);
+      let table=document.getElementById("table");
+      for(let i=0;i<obj.length;i++){
+        let tr1=document.createElement("tr");
+
+        let td1=document.createElement("td");
+        td1.innerHTML=obj[i].id;
+        tr1.appendChild(td1);
+
+        let td2=document.createElement("td");
+        td2.innerHTML=obj[i].title;
+        tr1.appendChild(td2);
+
+        let td3=document.createElement("td");
+        td3.innerHTML=obj[i].price;
+        tr1.appendChild(td3);
+
+        let td4=document.createElement("td");
+        td4.innerHTML=obj[i].description;
+        tr1.appendChild(td4);
+
+        
+        let td5=document.createElement("td");
+        td5.innerHTML=obj[i].category;
+        tr1.appendChild(td5);
+
+        let td6=document.createElement("td");
+        let img=document.createElement("img");
+        img.src=obj[i].image;
+        img.style.width="100px";
+        img.style.height="100px";
+        td6.style.textAlign="center";
+        td6.appendChild(img);
+        tr1.appendChild(td6);
+
+        let td7=document.createElement("td");
+        td7.innerHTML=obj[i].rating.count;
+        tr1.appendChild(td7);
+
+        let td8=document.createElement("td");
+        td8.innerHTML=obj[i].rating.count;
+        tr1.appendChild(td8);
+
+        table.appendChild(tr1);
+
       }
-    });
     </script>
 </body>
 </html>
